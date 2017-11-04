@@ -174,6 +174,10 @@ class InnerProfile extends React.Component {
         this.setState({ validation: validation });
     }
 
+    onDisableGravatar(event) {
+        this.setState({ disableGravatar: event.target.checked });
+    }
+
     onSlideStop(event) {
         let value = parseInt(event.target.value);
 
@@ -236,7 +240,7 @@ class InnerProfile extends React.Component {
                                 type='password' onChange={ this.onChange.bind(this, 'newPasswordAgain') } value={ this.state.newPasswordAgain }
                                 onBlur={ this.verifyPassword.bind(this, false) } validationMessage={ this.state.validation['password1'] } />
                             <Checkbox name='disableGravatar' label='Disable Gravatar integration' fieldClass='col-sm-offset-4 col-sm-8'
-                                onChange={ e => this.setState({ disableGravatar: e.target.checked }) } checked={ this.state.disableGravatar } />
+                                onChange={ this.onDisableGravatar.bind(this) } checked={ this.state.disableGravatar } />
                         </div>
                         <div>
                             <div className='panel-title'>
